@@ -22,6 +22,7 @@
                            "X-Ring-Anti-Forgery" "1"}}))
 
 (defn get
+  "Get a resource from a URL with an optional map of query parameters."
   ([url] (get url {}))
   ([url params]
    (http/request {:method :get
@@ -30,17 +31,21 @@
                   :headers {"Accept" "application/transit+json"}})))
 
 (defn post
-  ([url] (post url {}))
+  "Create a resource at a URL with a Transit-encoded body."
+  ([url] (post url nil))
   ([url params] (update-request :post url params)))
 
 (defn put
-  ([url] (put url {}))
+  "Replace a resource at a URL with a Transit-encoded body."
+  ([url] (put url nil))
   ([url params] (update-request :put url params)))
 
 (defn delete
-  ([url] (delete url {}))
+  "Delete a resource at a URL with a Transit-encoded body."
+  ([url] (delete url nil))
   ([url params] (update-request :delete url params)))
 
 (defn patch
-  ([url] (patch url {}))
+  "Patch a resource at a URL with a Transit-encoded body."
+  ([url] (patch url nil))
   ([url params] (update-request :patch url params)))
