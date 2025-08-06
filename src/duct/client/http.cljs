@@ -6,9 +6,12 @@
 (defn- ->path [x]
   (if (keyword? x) (name x) (str x)))
 
+(defn- add-starting-slash [s]
+  (if (str/starts-with? s "/") s (str "/" s)))
+
 (defn- parse-url [url]
   (if (vector? url)
-    (str/join "/" (map ->path url))
+    (add-starting-slash (str/join "/" (map ->path url)))
     url))
 
 (defn- update-request [method url params]

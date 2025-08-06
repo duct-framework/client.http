@@ -27,9 +27,9 @@
 (deftest test-url-parsing
   (let [request (atom {})]
     (with-redefs [cljs-http/request #(reset! request %)]
-      (http/get ["/foo" :bar 1])
-      (is (= {:method :get
-              :url "/foo/bar/1"
-              :query-params {}
-              :headers {"Accept" "application/transit+json"}}
-             @request)))))
+      (http/get [:foo :bar 1])
+      (is (= "/foo/bar/1" (:url @request)))))
+  (let [request (atom {})]
+    (with-redefs [cljs-http/request #(reset! request %)]
+      (http/get ["/foo" :bar])
+      (is (= "/foo/bar" (:url @request))))))
