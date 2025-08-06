@@ -23,3 +23,13 @@
               :headers {"Accept" "application/transit+json"
                         "X-Ring-Anti-Forgery" "1"}}
              @request)))))
+
+(deftest test-url-parsing
+  (let [request (atom {})]
+    (with-redefs [cljs-http/request #(reset! request %)]
+      (http/get ["/foo" :bar 1])
+      (is (= {:method :get
+              :url "/foo/bar/1"
+              :query-params {}
+              :headers {"Accept" "application/transit+json"}}
+             @request)))))

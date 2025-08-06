@@ -1,10 +1,19 @@
 (ns duct.client.http
   (:refer-clojure :exclude [get])
-  (:require [cljs-http.client :as http]))
+  (:require [cljs-http.client :as http]
+            [clojure.string :as str]))
+
+(defn- ->path [x]
+  (if (keyword? x) (name x) (str x)))
+
+(defn- parse-url [url]
+  (if (vector? url)
+    (str/join "/" (map ->path url))
+    url))
 
 (defn- update-request [method url params]
   (http/request {:method method
-                 :url url
+                 :url (parse-url url)
                  :transit-params params
                  :headers {"Accept" "application/transit+json"
                            "X-Ring-Anti-Forgery" "1"}}))
@@ -12,7 +21,9 @@
 (defn get
   ([url] (get url {}))
   ([url params]
-   (http/get url {:query-params params
+   (http/request {:method :get
+                  :url (parse-url url)
+                  :query-params params
                   :headers {"Accept" "application/transit+json"}})))
 
 (defn post
