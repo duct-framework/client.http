@@ -12,11 +12,11 @@ A simple ClojureScript HTTP client for the [Duct][] framework. It wraps
 
 Add the following dependency to your deps.edn file:
 
-    org.duct-framework/client.http {:mvn/version "0.1.0-SNAPSHOT"}
+    org.duct-framework/client.http {:mvn/version "0.1.0"}
 
 Or to your Leiningen project file:
 
-    [org.duct-framework/client.http "0.1.0-SNAPSHOT"]
+    [org.duct-framework/client.http "0.1.0"]
 
 ## Usage
 

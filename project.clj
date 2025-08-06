@@ -1,4 +1,4 @@
-(defproject org.duct-framework/client.http "0.1.0-SNAPSHOT"
+(defproject org.duct-framework/client.http "0.1.0"
   :description "A ClojureScript HTTP client for the Duct framework"
   :url "https://github.com/duct-framework/client.http"
   :license {:name "Eclipse Public License"
