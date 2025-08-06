@@ -3,4 +3,6 @@
   :url "https://github.com/duct-framework/client.http"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.12.1"]])
+  :dependencies [[org.clojure/clojure "1.12.1"]
+                 [org.clojure/clojurescript "1.12.42"]
+                 [cljs-http "0.1.48"]])
