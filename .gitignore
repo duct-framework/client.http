@@ -11,3 +11,5 @@ pom.xml.asc
 /.prepl-port
 .clj-kondo
 .cpcache
+/.cljs_node_repl
+/out

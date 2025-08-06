@@ -3,10 +3,11 @@
   (:require [cljs-http.client :as http]))
 
 (defn- update-request [method url params]
-  (http/request url {:method method
-                     :transit-params params
-                     :headers {"Accept" "application/transit+json"
-                               "X-Ring-Anti-Forgery" "1"}}))
+  (http/request {:method method
+                 :url url
+                 :transit-params params
+                 :headers {"Accept" "application/transit+json"
+                           "X-Ring-Anti-Forgery" "1"}}))
 
 (defn get
   ([url] (get url {}))
